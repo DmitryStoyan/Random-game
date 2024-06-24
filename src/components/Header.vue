@@ -1,16 +1,31 @@
 <template>
   <header class="header">
     <a class="header__logo" href="#"> Random Game </a>
-    <button class="header-menu__button" @click="openedPopup"></button>
+    <button
+      class="header-menu__button"
+      @click="isDownloadMenuModalOpen = true"
+    ></button>
   </header>
+  <DownloadMenu
+    v-if="isDownloadMenuModalOpen"
+    @close="isDownloadMenuModalOpen = false"
+  />
 </template>
 <script>
+import DownloadMenu from "./DownloadMenu.vue";
 export default {
-  methods: {
-    openedPopup() {
-      console.log("???");
-    },
+  components: {
+    DownloadMenu,
   },
+
+  emits: ["close"],
+
+  data() {
+    return {
+      isDownloadMenuModalOpen: false,
+    };
+  },
+  methods: {},
 };
 </script>
 <style scoped>

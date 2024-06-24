@@ -1,8 +1,8 @@
 <template>
-  <div class="menu">
+  <div class="menu" tabindex="-1" @keydown.esc="close">
     <div class="menu__content">
       <div class="install-screen">
-        <button class="menu__close-button"></button>
+        <button class="menu__close-button" @click="close"></button>
         <img
           class="icon"
           src="<%=require('./images/random-icon.png')%>"
@@ -18,17 +18,31 @@
   </div>
 </template>
 <script>
-export default {};
+export default {
+  emits: ["close"],
+
+  methods: {
+    close() {
+      this.$emit("close");
+    },
+  },
+
+  mounted() {
+    this.$el.focus();
+  },
+};
 </script>
 <style scoped>
 .menu {
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
+  top: 0;
+  left: 0;
   z-index: 5;
   background: wheat;
-  visibility: hidden;
-  opacity: 0;
+  /* visibility: hidden;
+  opacity: 0; */
   transition: opacity 0.5s ease;
 }
 

@@ -2,18 +2,18 @@
   <div class="app">
     <div class="page">
       <Header />
-      <DownloadMenu />
+      <Roulette />
     </div>
   </div>
 </template>
 <script>
 import Header from "./components/Header.vue";
-import DownloadMenu from "./components/DownloadMenu.vue";
+import Roulette from "./components/Roulette.vue";
 
 export default {
   components: {
     Header,
-    DownloadMenu,
+    Roulette,
   },
   methods: {},
 };
@@ -39,9 +39,45 @@ export default {
 .page {
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  /* height: 100vh; */
   margin: 0 auto;
   max-width: 90%;
   width: 120rem;
+}
+
+@media (max-width: 1024px) {
+  html {
+    font-size: calc(100vw / 768 * 10);
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: calc(100vw / 500 * 10);
+  }
+
+  .page {
+    max-width: 95%;
+  }
+}
+
+@media (max-width: 500px) {
+  html {
+    font-size: calc(100vw / 500 * 10);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .app {
+    position: relative;
+    background: #1b1f24;
+    border-radius: 10px;
+  }
+}
+
+@media (max-width: 375px) {
+  html {
+    font-size: calc(100vw / 375 * 10);
+  }
 }
 </style>
