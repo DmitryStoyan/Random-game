@@ -1,11 +1,10 @@
 <template>
   <div class="roulette">
     <div class="pointer"></div>
-    <div class="app">
+    <div class="app-roulette">
       <div class="scope">
         <ul class="list"></ul>
       </div>
-      <my-button class="btn" @click="start">Крутить</my-button>
     </div>
   </div>
 </template>
@@ -69,7 +68,7 @@ export default {
           });
         },
         {
-          root: document.querySelector(".scope"),
+          root: this.$el.querySelector(".scope"),
           threshold: 0.9,
         }
       );
@@ -96,7 +95,6 @@ export default {
 
       this.generateItems();
 
-      // const list = document.querySelector(".list");
       const list = this.$el.querySelector(".list");
 
       setTimeout(() => {
@@ -119,6 +117,10 @@ export default {
         }
       });
     },
+
+    openedLibrary() {
+      console.log("Библиотека игр открыта");
+    },
   },
 };
 </script>
@@ -126,7 +128,7 @@ export default {
 <style>
 .roulette {
   position: relative;
-  margin: 25rem 0 0 0;
+  margin: 15rem 0 0 0;
 }
 
 .active {
@@ -154,7 +156,9 @@ export default {
   background-image: url(@/images/pointer.png);
 }
 
-.app {
+.app-roulette {
+  display: flex;
+  flex-direction: column;
   position: relative;
   margin: 0 auto;
   background: #1b1f24;
@@ -198,6 +202,10 @@ export default {
   transition: 0.3s ease;
 }
 
+.btn-start {
+  margin: 5rem 0 3rem 0;
+}
+
 @media (max-width: 1024px) {
   .roulette {
     margin: 30rem 0 0 0;
@@ -217,7 +225,7 @@ export default {
 }
 
 @media screen and (max-width: 480px) {
-  .app {
+  .app-roulette {
     position: relative;
     background: #1b1f24;
     border-radius: 10px;

@@ -1,13 +1,14 @@
 <template>
-  <button>
+  <button class="btn">
     <slot></slot>
   </button>
 </template>
 <script>
 export default {};
 </script>
-<style scoped>
+<style>
 .btn {
+  align-self: center;
   padding: 1rem 3rem;
   background: #67aeff;
   color: white;

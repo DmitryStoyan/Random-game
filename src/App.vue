@@ -2,20 +2,34 @@
   <div class="app">
     <div class="page">
       <Header />
-      <Roulette />
+      <Roulette ref="roulette" />
+      <my-button class="btn btn-start" @click="startRoulette"
+        >Крутить</my-button
+      >
+      <my-button class="btn" @click="openedLibrary">Библиотека игр</my-button>
+      <LibraryGame />
     </div>
   </div>
 </template>
 <script>
 import Header from "./components/Header.vue";
 import Roulette from "./components/Roulette.vue";
+import LibraryGame from "./components/LibraryGame.vue";
 
 export default {
   components: {
     Header,
     Roulette,
+    LibraryGame,
   },
-  methods: {},
+  methods: {
+    startRoulette() {
+      this.$refs.roulette.start();
+    },
+    openedLibrary() {
+      this.$refs.roulette.openedLibrary();
+    },
+  },
 };
 </script>
 <style>
@@ -40,6 +54,7 @@ export default {
   display: flex;
   flex-direction: column;
   /* height: 100vh; */
+  min-height: 100vh;
   margin: 0 auto;
   max-width: 90%;
   width: 120rem;
